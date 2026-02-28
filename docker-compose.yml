@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:15
+    container_name: url_shortener_db
+    restart: always
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: url_shortener
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  backend:
+    build: ./backend
+    container_name: url_shortener_backend
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://myuser:mypassword@db:5432/url_shortener
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend
+    container_name: url_shortener_frontend
+    restart: always
+    ports:
+      - "5173:5173"
+    stdin_open: true
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

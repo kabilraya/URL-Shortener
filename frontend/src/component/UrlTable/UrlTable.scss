@@ -1,0 +1,137 @@
+$bg-dark: #0b111b;
+$bg-card: #0f172a;
+$border-color: #1e293b;
+$text-muted: #94a3b8;
+$text-bright: #f8fafc;
+$accent-blue: #3b82f6;
+
+.UrlTable {
+  background-color: $bg-dark;
+  color: $text-bright;
+
+  border-radius: 12px;
+  font-family: "Inter", sans-serif;
+
+  .table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .view-all {
+      color: $accent-blue;
+      font-size: 0.85rem;
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: $bg-card;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    overflow: hidden;
+
+    thead {
+      background-color: rgba(255, 255, 255, 0.02);
+
+      th {
+        text-align: left;
+        padding: 16px;
+        font-size: 0.75rem;
+        color: $text-muted;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border-bottom: 1px solid $border-color;
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid $border-color;
+        transition: background 0.2s ease;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.03);
+        }
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+
+      td {
+        padding: 16px;
+        font-size: 0.9rem;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .original-url-cell {
+    color: $text-muted;
+    max-width: 300px;
+
+    .truncate {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .short-alias-cell {
+    .alias-link {
+      color: #3b82f6;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: color 0.2s;
+
+      &:hover {
+        color: #60a5fa;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .click-count-cell {
+    font-weight: 700;
+    color: #f8fafc;
+  }
+  .create-at-cell {
+    color: $text-muted;
+  }
+
+  .analytics-btn {
+    background: transparent;
+    border: 1px solid $border-color;
+    color: $text-bright;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: $text-bright;
+      color: $bg-dark;
+      border-color: $text-bright;
+    }
+  }
+}
+
+.no-data {
+  text-align: center;
+  color: $text-muted;
+  padding: 40px;
+}
